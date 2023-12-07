@@ -1,0 +1,20 @@
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+def lowestCommonAncestor(root, p, q):
+    # Ensure p is smaller than q
+    if p.val > q.val:
+        p, q = q, p
+
+    while root:
+        # If both nodes are in the right subtree
+        if root.val < p.val:
+            root = root.right
+        # If both nodes are in the left subtree
+        elif root.val > q.val:
+            root = root.left
+        # If one node is in the left subtree and the other is in the right subtree
+        else:
